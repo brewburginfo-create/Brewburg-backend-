@@ -60,3 +60,18 @@ export async function logPipelineRun(status, storiesFetched, storiesSaved, error
     ran_at: new Date()
   });
 }
+export async function cleanOldStories() {
+  const twoWeeksAgo = new Date();
+  twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 14);
+  
+  const { data, error } = await supabase
+    .from('stories')
+    .delete()
+    .lt('published_at', twoWeeksAgo.toISOString());
+  
+  if (error) {
+    console.log('Cleanup error:', error.message);
+  } else {
+    console.log('🗑️ Old stories cleaned up successfully');
+  }
+}

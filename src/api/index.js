@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import cron from 'node-cron';
-import { getStoriesFeed } from '../pipeline/store.js';
+import { getStoriesFeed, cleanOldStories } from '../pipeline/store.js';
 import { runPipeline } from '../pipeline/run.js';
 
 dotenv.config();
@@ -44,6 +44,12 @@ cron.schedule('0 2 * * *', () => {
 cron.schedule('30 13 * * *', () => {
   console.log('🌆 Evening pipeline starting...');
   runPipeline();
+});
+
+// Auto-delete stories older than 14 days - every Sunday midnight IST
+cron.schedule('30 18 * * 0', () => {
+  console.log('🗑️ Running auto-cleanup...');
+  cleanOldStories();
 });
 
 console.log('⏰ Pipeline scheduled: 7:30am and 7:00pm IST daily');
