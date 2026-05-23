@@ -1,0 +1,26 @@
+{
+  "name": "brewburg-backend",
+  "version": "1.0.0",
+  "description": "Brewburg news pipeline and API server",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "pipeline": "node src/pipeline/run.js",
+    "test:pipeline": "node src/pipeline/test.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.36.0",
+    "@supabase/supabase-js": "^2.106.1",
+    "cheerio": "^1.0.0-rc.12",
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "expo": "^51.0.39",
+    "express": "^4.22.2",
+    "node-cron": "^3.0.3",
+    "node-fetch": "^3.3.2",
+    "rss-parser": "^3.13.0",
+    "ws": "^8.21.0"
+  }
+}
