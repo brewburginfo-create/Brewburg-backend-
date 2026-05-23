@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import cron from 'node-cron';
 import { getStoriesFeed } from '../pipeline/store.js';
 import { runPipeline } from '../pipeline/run.js';
 
@@ -32,6 +33,20 @@ app.post('/api/pipeline/run', async (req, res) => {
   res.json({ message: 'Pipeline started' });
   runPipeline();
 });
+
+// 7:30am IST = 2:00 UTC
+cron.schedule('0 2 * * *', () => {
+  console.log('🌅 Morning pipeline starting...');
+  runPipeline();
+});
+
+// 7:00pm IST = 13:30 UTC
+cron.schedule('30 13 * * *', () => {
+  console.log('🌆 Evening pipeline starting...');
+  runPipeline();
+});
+
+console.log('⏰ Pipeline scheduled: 7:30am and 7:00pm IST daily');
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
