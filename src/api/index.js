@@ -21,6 +21,10 @@ app.get('/api/stories', async (req, res) => {
   }
 });
 
+app.get('/api/pipeline/trigger', async (req, res) => {
+  res.json({ message: 'Pipeline triggered' });
+  runPipeline();
+});
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', app: 'Brewburg', time: new Date() });
 });
