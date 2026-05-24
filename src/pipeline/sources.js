@@ -1,11 +1,14 @@
 export const sources = [
   { name: 'Economic Times Markets', url: 'https://economictimes.indiatimes.com/markets/rssfeeds/1977021501.cms', category: 'Markets' },
   { name: 'Economic Times Startups', url: 'https://economictimes.indiatimes.com/small-biz/startups/rssfeeds/13357270.cms', category: 'Funding' },
-  { name: 'Moneycontrol', url: 'https://www.moneycontrol.com/rss/business.xml', category: 'Markets' },
+  { name: 'Economic Times Tech', url: 'https://economictimes.indiatimes.com/tech/rssfeeds/13357270.cms', category: 'Funding' },
   { name: 'Inc42', url: 'https://inc42.com/feed/', category: 'Funding' },
-  { name: 'VCCircle', url: 'https://www.vccircle.com/feed', category: 'Funding' },
   { name: 'TechCrunch', url: 'https://techcrunch.com/feed/', category: 'Funding' },
-  { name: 'Reuters Business', url: 'https://feeds.reuters.com/reuters/businessNews', category: 'Markets' },
+  { name: 'Mint Markets', url: 'https://www.livemint.com/rss/markets', category: 'Markets' },
+  { name: 'Mint Companies', url: 'https://www.livemint.com/rss/companies', category: 'M&A' },
+  { name: 'Financial Express', url: 'https://www.financialexpress.com/feed/', category: 'Markets' },
+  { name: 'Business Standard', url: 'https://www.business-standard.com/rss/latest.rss', category: 'Markets' },
+  { name: 'YourStory', url: 'https://yourstory.com/feed', category: 'Funding' },
 ];
 
 export const keywords = {
