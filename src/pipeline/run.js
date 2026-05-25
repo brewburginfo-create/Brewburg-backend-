@@ -41,3 +41,4 @@ export async function runPipeline() {
 }
 
 // Run immediately if called directly
+runPipeline();

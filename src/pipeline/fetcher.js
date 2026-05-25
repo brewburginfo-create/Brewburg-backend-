@@ -1,5 +1,6 @@
 import Parser from 'rss-parser';
 import { sources, keywords } from './sources.js';
+const BLOCKLIST = ['janta party', 'supreme court', 'election', 'cbi probe', 'fake advocates', 'PIL', 'political party', 'minister', 'parliament'];
 
 const parser = new Parser();
 
