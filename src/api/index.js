@@ -47,6 +47,15 @@ app.post('/api/pipeline/run', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 3001;
+app.post('/api/cleanup', async (req, res) => {
+  const { secret } = req.body;
+  if (secret !== process.env.ADMIN_SECRET) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  const { error } = await supabase.rpc('delete_old_stories');
+  if (error) return res.status(500).json({ error: error.message });
+  res.json({ message: 'Cleanup done' });
+});
 app.listen(PORT, () => {
   console.log('Brewburg API running on port ' + PORT);
 });

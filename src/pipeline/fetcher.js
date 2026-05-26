@@ -18,7 +18,7 @@ export async function fetchAllStories() {
   for (const source of sources) {
     try {
       const feed = await parser.parseURL(source.url);
-      const items = feed.items.slice(0, 10);
+      const items = feed.items.slice(0, 5);
 
       for (const item of items) {
        // Extract image from RSS feed
