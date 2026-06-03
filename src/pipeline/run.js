@@ -1,6 +1,7 @@
 import { fetchAllStories } from './fetcher.js';
 import { summariseStory } from './summariser.js';
 import { saveStories, logPipelineRun } from './store.js';
+import { sendNotification } from './notify.js';
 
 export async function runPipeline() {
   console.log('🚀 Brewburg pipeline starting...');
@@ -31,6 +32,9 @@ export async function runPipeline() {
 
     const duration = ((Date.now() - startTime) / 1000).toFixed(1);
     console.log(`\n✅ Pipeline done in ${duration}s — ${saved} stories saved`);
+    if (saved > 0 && stories[0]) {
+  await sendNotification('☕ Fresh Business News', stories[0].title);
+}
 
     await logPipelineRun('success', rawStories.length, saved);
 
